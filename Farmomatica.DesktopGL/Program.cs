@@ -1,2 +1,2 @@
-﻿using var game = new Farmomatica.DesktopGL.Game1();
+﻿using var game = new Farmomatica.Core.Game1();
 game.Run();
