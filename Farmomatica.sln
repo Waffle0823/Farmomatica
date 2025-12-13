@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farmomatica.DesktopGL", "Farmomatica.DesktopGL\Farmomatica.DesktopGL.csproj", "{0E9837E6-160F-495B-B10C-07E2BE1BBB62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farmomatica.Core", "Farmomatica.Core\Farmomatica.Core.csproj", "{C7B96AB6-89C4-4B53-9AD8-18326344F484}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{0E9837E6-160F-495B-B10C-07E2BE1BBB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E9837E6-160F-495B-B10C-07E2BE1BBB62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E9837E6-160F-495B-B10C-07E2BE1BBB62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B96AB6-89C4-4B53-9AD8-18326344F484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B96AB6-89C4-4B53-9AD8-18326344F484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B96AB6-89C4-4B53-9AD8-18326344F484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B96AB6-89C4-4B53-9AD8-18326344F484}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
