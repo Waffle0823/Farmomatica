@@ -1,5 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farmomatica.DesktopGL", "Farmomatica.DesktopGL\Farmomatica.DesktopGL.csproj", "{0E9837E6-160F-495B-B10C-07E2BE1BBB62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
