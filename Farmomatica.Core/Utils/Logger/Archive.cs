@@ -33,7 +33,7 @@ public static class Archive
         return _writeChannel.Writer.WriteAsync(message, ct).AsTask();
     }
 
-    public static void ArchiveCrash() => ArchiveLogsAsync().GetAwaiter().GetResult();
+    public static void ArchiveCrash(string content) => ArchiveCrashAsync(content).GetAwaiter().GetResult();
 
     public static async Task ArchiveCrashAsync(string content)
     {
