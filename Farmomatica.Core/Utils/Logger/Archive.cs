@@ -36,6 +36,22 @@ public static class Archive
         return _writeChannel.Writer.WriteAsync(message, ct).AsTask();
     }
 
+    public static void ArchiveCrash() => ArchiveLogsAsync().GetAwaiter().GetResult();
+
+    public static async Task ArchiveCrashAsync(string content)
+    {
+        string archivePath = Path.Combine(SystemPaths.CrashFolderPath, $"CrashReport_{DateTime.Now:yyyy-MM-dd_HH.mm.ss}.txt");
+
+        try
+        {
+            await File.WriteAllTextAsync(archivePath, content);
+        }
+        catch (Exception ex)
+        {
+            await Console.Error.WriteLineAsync("Error while archiving crash: " + ex.Message);
+        }
+    }
+
     public static void ArchiveLogs() => ArchiveLogsAsync().GetAwaiter().GetResult();
 
     public static async Task ArchiveLogsAsync()
