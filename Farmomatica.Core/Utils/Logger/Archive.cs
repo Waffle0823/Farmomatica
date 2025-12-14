@@ -25,10 +25,7 @@ public static class Archive
 
     public static void Write(string line)
     {
-        if (!_writeChannel.Writer.TryWrite(line))
-        {
-            throw new InvalidOperationException("Failed to write to channel");
-        }
+        _writeChannel.Writer.TryWrite(line);
     }
 
     public static Task WriteAsync(string message, CancellationToken ct = default)
