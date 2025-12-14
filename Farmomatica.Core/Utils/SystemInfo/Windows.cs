@@ -26,7 +26,7 @@ public static partial class WindowsCollector
     private static partial bool GlobalMemoryStatusEx(ref MemoryMarshal lpBuffer);
 
     [SupportedOSPlatform("windows")]
-    private static string GetCpuName_Windows()
+    private static string GetCpuName()
     {
         try
         {
@@ -44,7 +44,7 @@ public static partial class WindowsCollector
     }
 
     [SupportedOSPlatform("windows")]
-    private static ulong GetRamBytes_Windows()
+    private static ulong GetRamBytes()
     {
         MemoryMarshal memStatus = new()
         {
