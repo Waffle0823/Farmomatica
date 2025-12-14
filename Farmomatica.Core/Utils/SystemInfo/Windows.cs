@@ -5,7 +5,7 @@ using Microsoft.Win32;
 
 namespace Farmomatica.Core.Utils.SystemInfo;
 
-public static partial class WindowsCollector
+public partial class WindowsCollector : ISystemInfoCollector
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     private struct MemoryMarshal
@@ -26,7 +26,7 @@ public static partial class WindowsCollector
     private static partial bool GlobalMemoryStatusEx(ref MemoryMarshal lpBuffer);
 
     [SupportedOSPlatform("windows")]
-    private static string GetCpuName()
+    public string GetCpuName()
     {
         try
         {
@@ -44,7 +44,7 @@ public static partial class WindowsCollector
     }
 
     [SupportedOSPlatform("windows")]
-    private static ulong GetRamBytes()
+    public ulong GetRamBytes()
     {
         MemoryMarshal memStatus = new()
         {
