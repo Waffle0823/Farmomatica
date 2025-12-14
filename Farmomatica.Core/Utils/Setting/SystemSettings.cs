@@ -9,6 +9,8 @@ internal static class SystemPaths
 
     public static readonly string LogFolderPath = Path.Combine(_appDataPath, "logs");
     public const string LogFileName = "latest.log";
+
+    public static readonly string CrashFolderPath = Path.Combine(_appDataPath, "crash-reports");
 }
 
 internal static class TimeoutSettings
