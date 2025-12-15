@@ -2,6 +2,6 @@
 
 public interface ISystemInfoCollector
 {
-    string GetCpuName() => "Unkown CPU";
+    string GetCpuName() => "Unknown CPU";
     ulong GetRamBytes() => 0UL;
 }
