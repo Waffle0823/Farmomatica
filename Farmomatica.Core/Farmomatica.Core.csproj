@@ -8,4 +8,10 @@
             <PrivateAssets>All</PrivateAssets>
         </PackageReference>
     </ItemGroup>
+    <ItemGroup>
+      <AndroidResource Include="Icon.png">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      </AndroidResource>
+    </ItemGroup>
 </Project>
