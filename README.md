@@ -1,7 +1,5 @@
 # Farmomatica
 
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/waffle0823/Farmomatica)
-
 **Farmomatica** is a 2D isometric, open-world farming adventure with deep automation, dynamic economy, and procedural dungeon exploration. Built with **C#** on the **MonoGame** framework, the project uses a shared core library to support cross-platform releases across desktop and mobile.
 
 ---
