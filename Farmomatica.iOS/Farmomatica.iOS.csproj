@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net9.0-ios</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <SupportedOSPlatformVersion>12.2</SupportedOSPlatformVersion>
+        <CodesignKey>iPhone Developer</CodesignKey>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Farmomatica.Core\Farmomatica.Core.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Framework.iOS" Version="3.8.*"/>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\Farmomatica.Core\Assets\Default.png">
+        <Link>Default.png</Link>
+      </Content>
+      <Content Include="..\Farmomatica.Core\Assets\GameThumbnail.png">
+        <Link>GameThumbnail.png</Link>
+      </Content>
+    </ItemGroup>
+</Project>
