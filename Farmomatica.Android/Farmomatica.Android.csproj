@@ -8,7 +8,7 @@
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     </PropertyGroup>
     <ItemGroup>
-        <AndroidResource Include="..\Farmomatica.Core\Icon.png">
+        <AndroidResource Include="..\Farmomatica.Core\Assets\Icon.png">
             <Link>Resources\drawable\icon.png</Link>
         </AndroidResource>
     </ItemGroup>

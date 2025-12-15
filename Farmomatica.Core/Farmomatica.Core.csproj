@@ -9,7 +9,7 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <AndroidResource Include="Icon.png">
+      <AndroidResource Include="Assets\Icon.png">
         <SubType>Designer</SubType>
         <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       </AndroidResource>
