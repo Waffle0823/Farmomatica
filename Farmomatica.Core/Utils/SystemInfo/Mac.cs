@@ -49,7 +49,7 @@ public class MacCollector : ISystemInfoCollector
         }
         catch (Exception ex)
         {
-            Console.Error.WriteLine("Error while collecting ram info from macos: " + ex.Message);
+            Console.Error.WriteLine("Error while collecting mem info from macos: " + ex.Message);
             return 0UL;
         }
     }

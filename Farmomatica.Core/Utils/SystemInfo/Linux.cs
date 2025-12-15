@@ -35,7 +35,7 @@ public static class LinuxCollector
         }
         catch (Exception ex)
         {
-            Console.Error.WriteLine("Error while collecting ram info from linux: " + ex.Message);
+            Console.Error.WriteLine("Error while collecting mem info from linux: " + ex.Message);
             return 0UL;
         }
     }
