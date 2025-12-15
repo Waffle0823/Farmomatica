@@ -5,10 +5,10 @@ using System.Runtime.Versioning;
 
 namespace Farmomatica.Core.Utils.SystemInfo;
 
-public static class LinuxCollector
+public class LinuxCollector : ISystemInfoCollector
 {
     [SupportedOSPlatform("linux")]
-    private static string GetCpuName()
+    public string GetCpuName()
     {
         try
         {
@@ -24,7 +24,7 @@ public static class LinuxCollector
     }
 
     [SupportedOSPlatform("linux")]
-    private static ulong GetRamBytes()
+    public ulong GetRamBytes()
     {
         try
         {
