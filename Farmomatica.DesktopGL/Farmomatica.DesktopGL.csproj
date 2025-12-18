@@ -15,5 +15,6 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*"/>
+        <PackageReference Include="System.Management" Version="10.0.1" />
     </ItemGroup>
 </Project>
