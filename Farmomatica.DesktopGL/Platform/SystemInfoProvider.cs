@@ -10,7 +10,7 @@ using System.Management;
 using System.IO;
 #endif
 
-#if MACOS
+#if OSX
 using System.Diagnostics;
 #endif
 
@@ -73,7 +73,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
 #endif
 
-#if MACOS
+#if OSX
         try
         {
             using Process process = new()
@@ -161,7 +161,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
 #endif
 
-#if MACOS
+#if OSX
         try
         {
             using Process process = new()
