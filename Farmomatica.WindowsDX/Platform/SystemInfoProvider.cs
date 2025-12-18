@@ -39,11 +39,11 @@ public sealed class SystemInfoProvider : SystemInfoCollector
 
     protected override ulong? GetRamBytesInternal()
     {
+        if (_cachedRamBytes != null)
+            return _cachedRamBytes;
+
         try
         {
-            if (_cachedRamBytes != null)
-                return _cachedRamBytes;
-
             using ManagementObjectSearcher searcher = new("Select TotalPhysicalMemory From Win32_ComputerSystem");
 
             foreach (ManagementBaseObject mbo in searcher.Get())
