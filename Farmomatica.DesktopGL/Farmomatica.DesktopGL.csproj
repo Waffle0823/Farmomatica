@@ -19,9 +19,6 @@
     <PropertyGroup Condition="'$(RuntimeIdentifier)'=='osx-x64' Or '$(RuntimeIdentifier)'=='osx-arm64'">
         <DefineConstants>$(DefineConstants);OSX</DefineConstants>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-        <DefineConstants>$(DefineConstants);WINDOWS;LINUX;OSX</DefineConstants>
-    </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\Farmomatica.Core\Farmomatica.Core.csproj"/>
     </ItemGroup>
