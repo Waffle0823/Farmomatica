@@ -37,7 +37,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
                     continue;
 
                 _cachedCpuName = name;
-                return name;
+                return _cachedCpuName;
             }
 
             return null;
@@ -59,9 +59,8 @@ public sealed class SystemInfoProvider : SystemInfoCollector
                 if (!line.StartsWith("model name"))
                     continue;
 
-                string modelName = line.Split(':')[1].Trim();
-                _cachedCpuName = modelName;
-                return modelName;
+                _cachedCpuName = line.Split(':')[1].Trim();
+                return _cachedCpuName;
             }
 
             return null;
@@ -92,10 +91,8 @@ public sealed class SystemInfoProvider : SystemInfoCollector
             string result = process.StandardOutput.ReadToEnd().Trim();
             process.WaitForExit();
 
-            string cpuName = string.IsNullOrWhiteSpace(result) ? null : result;
-
-            _cachedCpuName = cpuName;
-            return cpuName;
+            _cachedCpuName = string.IsNullOrWhiteSpace(result) ? null : result;
+            return _cachedCpuName;
         }
         catch (Exception ex)
         {
