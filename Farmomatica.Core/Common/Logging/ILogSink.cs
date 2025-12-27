@@ -11,13 +11,13 @@ public interface ILogSink : IDisposable
     /// Writes a log entry to the sink.
     /// </summary>
     /// <param name="entry"></param>
-    void Write(in LogEntry entry);
+    bool TryWrite(in LogEntry entry);
 
     /// <summary>
     /// Writes a crash entry to the sink.
     /// </summary>
     /// <param name="entry"></param>
-    void WriteCrash(in CrashEntry entry);
+    bool TryWriteCrash(in CrashEntry entry);
 
     /// <summary>
     /// Flushes any buffered data to the underlying storage.
