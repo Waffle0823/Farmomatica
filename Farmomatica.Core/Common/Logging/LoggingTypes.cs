@@ -22,7 +22,7 @@ public enum LogLevel
 /// <param name="category"></param>
 public readonly struct LogEntry(LogLevel logLevel, string message, string category = "Default")
 {
-    public DateTimeOffset Time { get; } = DateTimeOffset.UtcNow;
+    public DateTime Time { get; } = DateTime.Now;
     public LogLevel Level { get; } = logLevel;
     public string Category { get; } = category;
     public string Message { get; } = message;
