@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <AssemblyName>Farmomatica</AssemblyName>
+        <AssemblyName>Farmomatica.DesktopGL</AssemblyName>
         <Company>Waffle Studio</Company>
         <Product>Farmomatica DesktopGL</Product>
         <Description>Farmomatica core wrapper for DesktopGL(windows, osx, linux)</Description>

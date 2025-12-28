@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <AssemblyName>Farmomatica</AssemblyName>
+        <AssemblyName>Farmomatica.Core</AssemblyName>
         <Company>Waffle Studio</Company>
         <Product>Farmomatica Core</Product>
         <Description>Core project for farmomatica</Description>

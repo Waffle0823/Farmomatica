@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <AssemblyName>Farmomatica</AssemblyName>
+        <AssemblyName>Farmomatica.iOS</AssemblyName>
         <Company>Waffle Studio</Company>
         <Product>Farmomatica Client</Product>
         <Description>Farmomatica core wrapper for ios</Description>
