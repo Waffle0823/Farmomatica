@@ -1,5 +1,5 @@
 ﻿using System;
-using Farmomatica.Core.Utils.Logger;
+using Farmomatica.Core.Common.Logging;
 using Farmomatica.Core.Utils.SystemInfo;
 
 #if WINDOWS
@@ -44,7 +44,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
         catch (Exception ex)
         {
-            Logger.Error("System Info Collector", "Error while getting cpu name from windows: " + ex.Message);
+            Log.Error("System Info Collector", "Error while getting cpu name from windows: " + ex.Message);
             return null;
         }
 #endif
@@ -67,7 +67,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
         catch (Exception ex)
         {
-            Logger.Error("System Info Collector", "Error while getting cpu name from linux: " + ex.Message);
+            Log.Error("System Info Collector", "Error while getting cpu name from linux: " + ex.Message);
             return null;
         }
 #endif
@@ -96,12 +96,12 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
         catch (Exception ex)
         {
-            Logger.Error("System Info Collector", "Error while getting cpu name from macos: " + ex.Message);
+            Log.Error("System Info Collector", "Error while getting cpu name from macos: " + ex.Message);
             return null;
         }
 #endif
 
-        Logger.Warning("System Info Collector", "Current OS isn't supported for system info collector");
+        Log.Warn("System Info Collector", "Current OS isn't supported for system info collector");
         return null;
     }
 
@@ -128,7 +128,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
         catch (Exception ex)
         {
-            Logger.Error("System Info Collector", "Error while getting ram bytes from windows: " + ex.Message);
+            Log.Error("System Info Collector", "Error while getting ram bytes from windows: " + ex.Message);
             return null;
         }
 #endif
@@ -153,7 +153,7 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
         catch (Exception ex)
         {
-            Logger.Error("System Info Collector", "Error while getting ram bytes from linux: " + ex.Message);
+            Log.Error("System Info Collector", "Error while getting ram bytes from linux: " + ex.Message);
             return null;
         }
 #endif
@@ -185,12 +185,12 @@ public sealed class SystemInfoProvider : SystemInfoCollector
         }
         catch (Exception ex)
         {
-            Logger.Error("System Info Collector", "Error while getting ram bytes from macos: " + ex.Message);
+            Log.Error("System Info Collector", "Error while getting ram bytes from macos: " + ex.Message);
             return null;
         }
 #endif
 
-        Logger.Warning("System Info Collector", "Current OS isn't supported for system info collector");
+        Log.Warn("System Info Collector", "Current OS isn't supported for system info collector");
         return null;
     }
 }
