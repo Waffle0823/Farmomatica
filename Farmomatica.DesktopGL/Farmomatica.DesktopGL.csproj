@@ -35,6 +35,8 @@
         <ProjectReference Include="..\Farmomatica.Core\Farmomatica.Core.csproj"/>
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Farmomatica.Steamworks.Dll" Version="1.63.0" />
+        <PackageReference Include="Farmomatica.Steamworks.NET" Version="2025.163.0" />
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*"/>
         <PackageReference Include="System.Management" Version="10.0.1"/>
     </ItemGroup>
