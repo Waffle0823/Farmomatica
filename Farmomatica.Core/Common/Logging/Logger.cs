@@ -46,7 +46,6 @@ public sealed class Logger : IDisposable
     private async Task ProcessLog()
     {
         await foreach (LogEntry entry in _logChannel.Reader.ReadAllAsync())
-
         {
             if (!_sink.TryWrite(entry))
             {
