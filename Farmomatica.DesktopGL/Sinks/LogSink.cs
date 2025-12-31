@@ -42,7 +42,7 @@ public sealed class LogSink(string logFilePath, string archiveFolderPath, string
             _ => "\u001b[0m"
         };
 
-        Console.WriteLine(Color(entry.Level) + message + "\\u001b[0m");
+        Console.WriteLine(Color(entry.Level) + message + "\u001b[0m");
 #endif
 
         try
