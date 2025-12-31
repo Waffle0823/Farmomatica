@@ -16,7 +16,7 @@ namespace Farmomatica.DesktopGL.Sinks;
 
 public sealed class LogSink(string logFilePath, string archiveFolderPath, string crashFolderPath) : ILogSink
 {
-    private readonly StreamWriter _logWriter = new(logFilePath, true);
+    private readonly StreamWriter _logWriter = new(logFilePath, true) { AutoFlush = true };
 
     private static readonly Assembly _executingAssembly = Assembly.GetExecutingAssembly();
     private static readonly Assembly[] _loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
