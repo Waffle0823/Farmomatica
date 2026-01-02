@@ -14,7 +14,7 @@ using Steamworks;
 
 namespace Farmomatica.DesktopGL.Sinks;
 
-public sealed class LogSink(string logFilePath, string archiveFolderPath, string crashFolderPath) : ILogSink
+public sealed class LogSink(string logFilePath, string logArchiveFolderPath, string crashFolderPath) : ILogSink
 {
     private readonly StreamWriter _logWriter = new(logFilePath, true) { AutoFlush = true };
 
@@ -152,9 +152,9 @@ public sealed class LogSink(string logFilePath, string archiveFolderPath, string
 
         try
         {
-            Directory.CreateDirectory(archiveFolderPath);
+            Directory.CreateDirectory(logArchiveFolderPath);
 
-            string archivePath = Path.Combine(archiveFolderPath, GetArchiveName());
+            string archivePath = Path.Combine(logArchiveFolderPath, GetArchiveName());
 
             using FileStream source = File.OpenRead(logFilePath);
             using FileStream destination = File.Create(archivePath);
@@ -189,7 +189,7 @@ public sealed class LogSink(string logFilePath, string archiveFolderPath, string
 
         try
         {
-            IEnumerable<string> existingFiles = Directory.EnumerateFiles(archiveFolderPath, pattern, SearchOption.TopDirectoryOnly);
+            IEnumerable<string> existingFiles = Directory.EnumerateFiles(logArchiveFolderPath, pattern, SearchOption.TopDirectoryOnly);
 
             int nextIndex = existingFiles.Count() + 1;
 
