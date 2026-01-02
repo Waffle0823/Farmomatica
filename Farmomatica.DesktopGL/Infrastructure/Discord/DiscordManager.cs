@@ -15,8 +15,10 @@ internal sealed record DiscordTokenCache(
 
 public static class DiscordManager
 {
-    private static readonly Client _client;
+    private static readonly Client _client = new();
     private static string _codeVerifier;
+    
+    private static bool _initialized;
 
     private static void SaveToken(string accessToken, string refreshToken, int expiresInSeconds)
     {
@@ -104,7 +106,7 @@ public static class DiscordManager
         else
         {
             Log.Error("Discord", "Error while processing token: " + result.Error());
-            
+
             OnRetrieveTokenFailed();
         }
     }
@@ -156,6 +158,11 @@ public static class DiscordManager
 
     public static void Initialize()
     {
+        if (_initialized) return;
+        
+        _client.AddLogCallback(OnLog, LoggingSeverity.None);
+        _client.SetStatusChangedCallback(OnStatusChanged);
+
         Directory.CreateDirectory(SystemPaths.TokenCachePath);
 
         if (TryLoadToken(out DiscordTokenCache cache))
@@ -177,13 +184,7 @@ public static class DiscordManager
         }
 
         StartOAuthFlow();
-    }
 
-    static DiscordManager()
-    {
-        _client = new Client();
-
-        _client.AddLogCallback(OnLog, LoggingSeverity.None);
-        _client.SetStatusChangedCallback(OnStatusChanged);
+        _initialized = true;
     }
 }
