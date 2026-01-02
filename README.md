@@ -105,5 +105,5 @@ The repository is organized to support scalable, cross-platform development:
 ## License
 
 **All Rights Reserved.**
-Copyright (c) 2025 Waffle0823.
+Copyright (c) 2026 Waffle0823.
 See the [LICENSE](LICENSE) file for details.
