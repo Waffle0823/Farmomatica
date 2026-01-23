@@ -38,3 +38,8 @@
 
 # clang-tidy output
 /clang-tidy-fixes.patch
+
+# vcpkg
+/vcpkg_installed/
+/.vcpkg/
+/buildtrees/

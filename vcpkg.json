@@ -1,5 +1,5 @@
 {
-  "name": "Farmomatica",
-  "version": "0.1.0",
-  "dependencies": []
+  "dependencies": [
+    "raylib"
+  ]
 }
