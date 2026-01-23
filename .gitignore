@@ -43,3 +43,6 @@
 /vcpkg_installed/
 /.vcpkg/
 /buildtrees/
+
+# clangd
+/compile_commands.json
