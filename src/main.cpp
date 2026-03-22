@@ -1,10 +1,12 @@
 #include "common/logger/log.h"
 #include <raylib.h>
 
+constexpr int windowWidth = 800;
+constexpr int windowHeight = 600;
+
 int main(int, char **) {
   Log::Init();
-  constexpr int windowWidth = 800;
-  constexpr int windowHeight = 600;
+  LOG_INFO("Logger Initialized");
 
   InitWindow(windowWidth, windowHeight, "Farmomatica");
   LOG_INFO("Window Initialized");
