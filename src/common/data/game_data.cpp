@@ -38,5 +38,9 @@ fs::path GetGlobalPath() {
     throw std::runtime_error("Unsupported OS");
   }
 
+  if (!fs::exists(path)) {
+    fs::create_directories(path);
+  }
+
   return path;
 }
