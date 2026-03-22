@@ -4,9 +4,11 @@ project(Farmomatica VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(raylib CONFIG REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(spdlog REQUIRED)
 
 add_executable(Farmomatica src/main.cpp)
-target_link_libraries(Farmomatica PRIVATE raylib)
+target_link_libraries(Farmomatica PRIVATE raylib glfw spdlog::spdlog)
 
 if (CMAKE_EXPORT_COMPILE_COMMANDS)
     set(COMPILE_COMMANDS_SRC
