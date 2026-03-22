@@ -7,7 +7,7 @@ find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(spdlog REQUIRED)
 
-add_executable(Farmomatica src/main.cpp)
+add_executable(Farmomatica src/main.cpp src/common/logger/log.cpp)
 target_link_libraries(Farmomatica PRIVATE raylib glfw spdlog::spdlog)
 
 if (CMAKE_EXPORT_COMPILE_COMMANDS)
