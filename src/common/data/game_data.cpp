@@ -38,9 +38,37 @@ fs::path GetGlobalPath() {
     throw std::runtime_error("Unsupported OS");
   }
 
+  return path;
+}
+
+fs::path GameData::GetTexturesPath() {
+  fs::path path = fs::current_path() / "assets" / "textures";
   if (!fs::exists(path)) {
     fs::create_directories(path);
   }
+  return path;
+}
 
+fs::path GameData::GetShadersPath() {
+  fs::path path = fs::current_path() / "assets" / "shaders";
+  if (!fs::exists(path)) {
+    fs::create_directories(path);
+  }
+  return path;
+}
+
+fs::path GameData::GetSavesPath() {
+  fs::path path = GetGlobalPath() / "saves";
+  if (!fs::exists(path)) {
+    fs::create_directories(path);
+  }
+  return path;
+}
+
+fs::path GameData::GetConfigPath() {
+  fs::path path = GetGlobalPath() / "config";
+  if (!fs::exists(path)) {
+    fs::create_directories(path);
+  }
   return path;
 }
