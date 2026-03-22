@@ -57,6 +57,14 @@ fs::path GameData::GetShadersPath() {
   return path;
 }
 
+fs::path GameData::GetLogsPath() {
+  fs::path path = fs::current_path() / "logs";
+  if (!fs::exists(path)) {
+    fs::create_directories(path);
+  }
+  return path;
+}
+
 fs::path GameData::GetSavesPath() {
   fs::path path = GetGlobalPath() / "saves";
   if (!fs::exists(path)) {
