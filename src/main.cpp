@@ -1,6 +1,8 @@
 #include "common/logger/log.h"
 #include <raylib.h>
 
+using farmomatica::Log;
+
 constexpr int windowWidth = 800;
 constexpr int windowHeight = 600;
 

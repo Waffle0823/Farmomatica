@@ -4,6 +4,8 @@
 
 #include "common/logger/log.h"
 
+namespace farmomatica {
+
 std::shared_ptr<spdlog::logger> Log::s_Logger;
 
 void Log::Init() {
@@ -29,3 +31,5 @@ void Log::Init() {
 }
 
 std::shared_ptr<spdlog::logger> &Log::GetLogger() { return s_Logger; }
+
+} // namespace farmomatica

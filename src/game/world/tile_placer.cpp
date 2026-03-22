@@ -2,7 +2,9 @@
 #include <string>
 
 #include "game/assets/tile/tile_loader.h"
-#include "game/world/tile_placer/tile_placer.h"
+#include "game/world/tile_placer.h"
+
+namespace farmomatica {
 
 void TilePlacer::PlaceTile(const std::string &name, const int x, const int y,
                            const int z) {
@@ -22,3 +24,5 @@ void TilePlacer::PlaceTile(const std::string &name, const int x, const int y,
 
   DrawTexture(texture, screenX, screenY, WHITE);
 }
+
+} // namespace farmomatica

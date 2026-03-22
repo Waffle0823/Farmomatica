@@ -2,9 +2,11 @@
 #include <stdexcept>
 
 #include "common/data/game_data.h"
-#include "common/setting/global_settings.hpp"
+#include "common/settings/global_settings.h"
 
 namespace fs = std::filesystem;
+
+namespace farmomatica {
 
 fs::path GetGlobalPath() {
   fs::path path;
@@ -12,7 +14,7 @@ fs::path GetGlobalPath() {
 #if defined(_WIN32) || defined(_WIN64)
   const char *appdata = std::getenv("APPDATA");
   if (appdata)
-    path = std::filesystem::path(appdata) / Settings::Global::NAME;
+    path = std::filesystem::path(appdata) / farmomatica::Settings::Global::NAME;
   else
     throw std::runtime_error("Failed to find config path");
 
@@ -20,7 +22,7 @@ fs::path GetGlobalPath() {
   const char *home = std::getenv("HOME");
   if (home)
     path = std::filesystem::path(home) / "Library" / "Application Support" /
-           Settings::Global::NAME;
+           farmomatica::Settings::Global::NAME;
   else
     throw std::runtime_error("Failed to find config path");
 
@@ -28,7 +30,7 @@ fs::path GetGlobalPath() {
   const char *home = std::getenv("HOME");
   if (home)
     path = std::filesystem::path(home) / ".local" / "share" /
-           Settings::Global::NAME;
+           farmomatica::Settings::Global::NAME;
   else
     throw std::runtime_error("Failed to find config path");
 
@@ -80,3 +82,5 @@ fs::path GameData::GetConfigPath() {
   }
   return path;
 }
+
+} // namespace farmomatica

@@ -5,6 +5,8 @@
 #include <string>
 #include <unordered_map>
 
+namespace farmomatica {
+
 class TileLoader {
 public:
   static bool LoadTiles(const std::filesystem::path &path);
@@ -13,3 +15,5 @@ public:
 private:
   static std::unordered_map<std::string, Texture2D> tiles;
 };
+
+} // namespace farmomatica

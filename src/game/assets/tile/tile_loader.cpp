@@ -7,6 +7,8 @@
 
 namespace fs = std::filesystem;
 
+namespace farmomatica {
+
 std::unordered_map<std::string, Texture2D> TileLoader::tiles;
 
 bool TileLoader::LoadTiles(const std::filesystem::path &path) {
@@ -41,3 +43,5 @@ Texture2D TileLoader::GetTile(const std::string &path) {
   LOG_ERROR("Tile not found: {}", path);
   return Texture2D{};
 }
+
+} // namespace farmomatica

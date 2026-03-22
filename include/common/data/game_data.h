@@ -1,4 +1,8 @@
+#pragma once
+
 #include <filesystem>
+
+namespace farmomatica {
 
 class GameData {
 public:
@@ -8,3 +12,5 @@ public:
   static std::filesystem::path GetSavesPath();
   static std::filesystem::path GetConfigPath();
 };
+
+} // namespace farmomatica
