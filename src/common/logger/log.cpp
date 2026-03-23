@@ -2,7 +2,9 @@
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
+#include "common/data/game_data.h"
 #include "common/logger/log.h"
+#include "common/settings/global_settings.h"
 
 namespace farmomatica {
 
@@ -15,7 +17,7 @@ void Log::Init() {
   console_sink->set_pattern("[%T] [%^%l%$] %v");
 
   auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
-      "logs/game.log", 5 * 1024 * 1024, 3);
+      paths::GetLogsPath() / config::LOG_FILE_NAME, 5 * 1024 * 1024, 3);
   file_sink->set_pattern("[%T] [%l] %v");
 
   std::vector<spdlog::sink_ptr> sinks{console_sink, file_sink};
