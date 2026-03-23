@@ -7,23 +7,23 @@ namespace fs = std::filesystem;
 
 namespace farmomatica {
 
-TextureLoader &TextureLoader::getInstance() noexcept {
+TextureLoader &TextureLoader::GetInstance() noexcept {
   static TextureLoader instance;
   return instance;
 }
 
 TextureLoader::~TextureLoader() noexcept {
-  unloadAll();
+  UnloadAll();
 }
 
-void TextureLoader::loadTextures(const fs::path &path) {
+void TextureLoader::LoadTextures(const fs::path &path) {
   if (!fs::exists(path)) {
     return;
   }
 
   for (const fs::directory_entry &entry : fs::directory_iterator(path)) {
     if (entry.is_regular_file()) {
-      if (utils::isTextureExtensionSupported(
+      if (utils::IsTextureExtensionSupported(
               entry.path().extension().string())) {
         Texture2D texture = LoadTexture(entry.path().c_str());
 
@@ -40,18 +40,18 @@ void TextureLoader::loadTextures(const fs::path &path) {
   }
 }
 
-void TextureLoader::unloadTexture(std::string_view identifier) noexcept {
+void TextureLoader::UnloadTexture(std::string_view identifier) noexcept {
   auto it = tiles_.find(std::string(identifier));
 
   if (it != tiles_.end()) {
-    UnloadTexture(it->second);
+    ::UnloadTexture(it->second);
     tiles_.erase(it);
   } else {
     LOG_WARN("Texture not found: {}", identifier);
   }
 }
 
-std::optional<std::reference_wrapper<Texture2D>> TextureLoader::getTexture(std::string_view identifier) noexcept {
+std::optional<std::reference_wrapper<Texture2D>> TextureLoader::GetTexture(std::string_view identifier) noexcept {
   auto it = tiles_.find(std::string(identifier));
 
   if (it != tiles_.end()) {
@@ -62,9 +62,9 @@ std::optional<std::reference_wrapper<Texture2D>> TextureLoader::getTexture(std::
   return std::nullopt;
 }
 
-void TextureLoader::unloadAll() noexcept {
+void TextureLoader::UnloadAll() noexcept {
   for (auto &[identifier, texture] : tiles_) {
-    UnloadTexture(texture);
+    ::UnloadTexture(texture);
   }
   tiles_.clear();
   LOG_DEBUG("All textures unloaded");

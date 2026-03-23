@@ -12,7 +12,7 @@ namespace farmomatica {
 
 class TextureLoader {
 public:
-  static TextureLoader &getInstance() noexcept;
+  static TextureLoader &GetInstance() noexcept;
 
   TextureLoader(const TextureLoader &) = delete;
   TextureLoader &operator=(const TextureLoader &) = delete;
@@ -25,25 +25,25 @@ public:
    * @throws std::filesystem::filesystem_error If the directory cannot be accessed
    * or read.
    */
-  void loadTextures(const std::filesystem::path &path);
+  void LoadTextures(const std::filesystem::path &path);
 
   /**
    * @brief Unloads a texture by its identifier.
    * @param identifier The string identifier of the texture to unload.
    */
-  void unloadTexture(std::string_view identifier) noexcept;
+  void UnloadTexture(std::string_view identifier) noexcept;
 
   /**
    * @brief Retrieves a texture by its identifier.
    * @param identifier The string identifier of the texture to retrieve.
    * @return Optional reference to the Texture2D if found, std::nullopt otherwise.
    */
-  std::optional<std::reference_wrapper<Texture2D>> getTexture(std::string_view identifier) noexcept;
+  std::optional<std::reference_wrapper<Texture2D>> GetTexture(std::string_view identifier) noexcept;
 
   /**
    * @brief Unloads all textures and cleans up resources.
    */
-  void unloadAll() noexcept;
+  void UnloadAll() noexcept;
 
 private:
   TextureLoader() = default;

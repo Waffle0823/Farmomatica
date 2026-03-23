@@ -10,7 +10,7 @@ namespace fs = std::filesystem;
 namespace farmomatica {
 
 namespace {
-fs::path getGlobalPath() {
+fs::path GetGlobalPath() {
   fs::path path;
 
 #if defined(_WIN32) || defined(_WIN64)
@@ -54,7 +54,7 @@ fs::path getGlobalPath() {
 
 namespace paths {
 
-fs::path getTexturesPath() {
+fs::path GetTexturesPath() {
   fs::path path = fs::current_path() / "assets" / "textures";
   if (!fs::exists(path)) {
     fs::create_directories(path);
@@ -62,7 +62,7 @@ fs::path getTexturesPath() {
   return path;
 }
 
-fs::path getShadersPath() {
+fs::path GetShadersPath() {
   fs::path path = fs::current_path() / "assets" / "shaders";
   if (!fs::exists(path)) {
     fs::create_directories(path);
@@ -70,7 +70,7 @@ fs::path getShadersPath() {
   return path;
 }
 
-fs::path getLogsPath() {
+fs::path GetLogsPath() {
   fs::path path = fs::current_path() / "logs";
   if (!fs::exists(path)) {
     fs::create_directories(path);
@@ -78,16 +78,16 @@ fs::path getLogsPath() {
   return path;
 }
 
-fs::path getSavesPath() {
-  fs::path path = getGlobalPath() / "saves";
+fs::path GetSavesPath() {
+  fs::path path = GetGlobalPath() / "saves";
   if (!fs::exists(path)) {
     fs::create_directories(path);
   }
   return path;
 }
 
-fs::path getConfigPath() {
-  fs::path path = getGlobalPath() / "config";
+fs::path GetConfigPath() {
+  fs::path path = GetGlobalPath() / "config";
   if (!fs::exists(path)) {
     fs::create_directories(path);
   }
