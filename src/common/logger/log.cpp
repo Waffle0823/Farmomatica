@@ -30,6 +30,6 @@ void Log::Init() {
   s_Logger->flush_on(spdlog::level::warn);
 }
 
-std::shared_ptr<spdlog::logger> &Log::GetLogger() { return s_Logger; }
+std::shared_ptr<spdlog::logger> &Log::GetLogger() noexcept { return s_Logger; }
 
 } // namespace farmomatica

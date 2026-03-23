@@ -1,17 +1,22 @@
 #include "game/assets/texture_loader.h"
 
-#include <unordered_map>
-
 #include "common/logger/log.h"
 #include "common/utils/extension_utils.h"
 
 namespace fs = std::filesystem;
 
 namespace farmomatica {
-namespace texture_loader {
-static std::unordered_map<std::string, Texture2D> tiles;
 
-void LoadTextures(const fs::path &path) {
+TextureLoader &TextureLoader::getInstance() noexcept {
+  static TextureLoader instance;
+  return instance;
+}
+
+TextureLoader::~TextureLoader() noexcept {
+  unloadAll();
+}
+
+void TextureLoader::loadTextures(const fs::path &path) {
   if (!fs::exists(path)) {
     return;
   }
@@ -25,7 +30,7 @@ void LoadTextures(const fs::path &path) {
         fs::path relative =
             fs::relative(entry.path(), path).replace_extension("");
 
-        tiles[relative.string()] = texture;
+        tiles_[relative.string()] = texture;
 
         LOG_DEBUG("Texture loaded successfully: {}", relative.string());
       } else {
@@ -35,26 +40,34 @@ void LoadTextures(const fs::path &path) {
   }
 }
 
-void UnloadTexture(const std::string &identifier) {
-  auto it = tiles.find(identifier);
+void TextureLoader::unloadTexture(std::string_view identifier) noexcept {
+  auto it = tiles_.find(std::string(identifier));
 
-  if (it != tiles.end()) {
+  if (it != tiles_.end()) {
     UnloadTexture(it->second);
-    tiles.erase(it);
+    tiles_.erase(it);
   } else {
     LOG_WARN("Texture not found: {}", identifier);
   }
 }
 
-Texture2D *GetTexture(const std::string &identifier) {
-  auto it = tiles.find(identifier);
+std::optional<std::reference_wrapper<Texture2D>> TextureLoader::getTexture(std::string_view identifier) noexcept {
+  auto it = tiles_.find(std::string(identifier));
 
-  if (it != tiles.end()) {
-    return &it->second;
+  if (it != tiles_.end()) {
+    return std::ref(it->second);
   }
 
   LOG_WARN("Texture not found: {}", identifier);
-  return nullptr;
+  return std::nullopt;
 }
-} // namespace texture_loader
+
+void TextureLoader::unloadAll() noexcept {
+  for (auto &[identifier, texture] : tiles_) {
+    UnloadTexture(texture);
+  }
+  tiles_.clear();
+  LOG_DEBUG("All textures unloaded");
+}
+
 } // namespace farmomatica

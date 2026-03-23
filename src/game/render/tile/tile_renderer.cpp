@@ -3,14 +3,14 @@
 
 namespace farmomatica {
 
-void RenderTile(const std::string &name, Vector3 pos) {
-  const Texture2D *texture = texture_loader::GetTexture(name);
+void RenderTile(std::string_view name, Vector3 pos) noexcept {
+  auto textureOpt = TextureLoader::getInstance().getTexture(name);
 
-  if (texture == nullptr) {
+  if (!textureOpt.has_value()) {
     return;
   }
 
-  DrawTexture(*texture, pos.x, pos.y, WHITE);
+  DrawTexture(textureOpt->get(), pos.x, pos.y, WHITE);
 }
 
 } // namespace farmomatica

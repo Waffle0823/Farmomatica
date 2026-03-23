@@ -11,7 +11,7 @@ class Log {
 public:
   static void Init();
 
-  static std::shared_ptr<spdlog::logger> &GetLogger();
+  static std::shared_ptr<spdlog::logger> &GetLogger() noexcept;
 
 private:
   static std::shared_ptr<spdlog::logger> s_Logger;

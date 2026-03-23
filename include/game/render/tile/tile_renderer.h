@@ -1,7 +1,7 @@
 #pragma once
 
 #include <raylib.h>
-#include <string>
+#include <string_view>
 
 namespace farmomatica {
 
@@ -10,6 +10,6 @@ namespace farmomatica {
  * @param name The string identifier of the texture to render.
  * @param pos The 3D position where the tile should be rendered.
  */
-void RenderTile(const std::string &name, Vector3 pos);
+void RenderTile(std::string_view name, Vector3 pos) noexcept;
 
 } // namespace farmomatica
