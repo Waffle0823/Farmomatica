@@ -14,7 +14,7 @@ fs::path GetGlobalPath() {
 #if defined(_WIN32) || defined(_WIN64)
   const char *appdata = std::getenv("APPDATA");
   if (appdata)
-    path = std::filesystem::path(appdata) / farmomatica::Settings::Global::Application::NAME;
+    path = std::filesystem::path(appdata) / farmomatica::settings::global::application::NAME;
   else
     throw std::runtime_error("Failed to find config path");
 
@@ -22,7 +22,7 @@ fs::path GetGlobalPath() {
   const char *home = std::getenv("HOME");
   if (home)
     path = std::filesystem::path(home) / "Library" / "Application Support" /
-           farmomatica::Settings::Global::Application::NAME;
+           farmomatica::settings::global::application::NAME;
   else
     throw std::runtime_error("Failed to find config path");
 
@@ -30,7 +30,7 @@ fs::path GetGlobalPath() {
   const char *home = std::getenv("HOME");
   if (home)
     path = std::filesystem::path(home) / ".local" / "share" /
-           farmomatica::Settings::Global::Application::NAME;
+           farmomatica::settings::global::application::NAME;
   else
     throw std::runtime_error("Failed to find config path");
 

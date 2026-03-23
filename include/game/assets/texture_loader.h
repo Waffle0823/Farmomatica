@@ -3,7 +3,7 @@
 #include <string>
 
 namespace farmomatica {
-namespace TextureLoader {
+namespace texture_loader {
 /**
  * @brief Loads all textures from the specified directory path.
  * @param path The filesystem path to the directory containing textures.
@@ -25,5 +25,5 @@ void UnloadTexture(const std::string &identifier);
  * not exist.
  */
 Texture2D *GetTexture(const std::string &identifier);
-} // namespace TextureLoader
+} // namespace texture_loader
 } // namespace farmomatica

@@ -8,7 +8,7 @@
 namespace fs = std::filesystem;
 
 namespace farmomatica {
-namespace TextureLoader {
+namespace texture_loader {
 static std::unordered_map<std::string, Texture2D> tiles;
 
 void LoadTextures(const fs::path &path) {
@@ -18,7 +18,7 @@ void LoadTextures(const fs::path &path) {
 
   for (const fs::directory_entry &entry : fs::directory_iterator(path)) {
     if (entry.is_regular_file()) {
-      if (Utils::isTextureExtensionSupported(
+      if (utils::isTextureExtensionSupported(
               entry.path().extension().string())) {
         Texture2D texture = LoadTexture(entry.path().c_str());
 
@@ -56,5 +56,5 @@ Texture2D *GetTexture(const std::string &identifier) {
   LOG_WARN("Texture not found: {}", identifier);
   return nullptr;
 }
-} // namespace TextureLoader
+} // namespace texture_loader
 } // namespace farmomatica

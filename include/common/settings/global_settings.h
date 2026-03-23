@@ -4,21 +4,21 @@
 #include <string_view>
 
 namespace farmomatica {
-namespace Settings {
-namespace Global {
+namespace settings {
+namespace global {
 
-namespace Application {
+namespace application {
 inline constexpr std::string_view NAME = "Farmomatica";
-} // namespace Application
+} // namespace application
 
-namespace Assets {
-namespace Textures {
+namespace assets {
+namespace textures {
 inline constexpr std::array<std::string_view, 1> SUPPORTED_EXTENSIONS = {
     ".png"};
 inline constexpr int NULL_TEXTURE_WIDTH = 32;
 inline constexpr int NULL_TEXTURE_HEIGHT = 32;
-} // namespace Textures
-} // namespace Assets
-} // namespace Global
-} // namespace Settings
+} // namespace textures
+} // namespace assets
+} // namespace global
+} // namespace settings
 } // namespace farmomatica

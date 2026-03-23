@@ -4,7 +4,7 @@
 namespace farmomatica {
 
 void RenderTile(const std::string &name, Vector3 pos) {
-  const Texture2D *texture = TextureLoader::GetTexture(name);
+  const Texture2D *texture = texture_loader::GetTexture(name);
 
   if (texture == nullptr) {
     return;

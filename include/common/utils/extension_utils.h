@@ -7,12 +7,12 @@
 #include "common/settings/global_settings.h"
 
 namespace farmomatica {
-namespace Utils {
+namespace utils {
 inline constexpr bool isTextureExtensionSupported(std::string_view extension) {
-  return std::find(Settings::Global::Assets::Textures::SUPPORTED_EXTENSIONS.begin(),
-                   Settings::Global::Assets::Textures::SUPPORTED_EXTENSIONS.end(),
+  return std::find(settings::global::assets::textures::SUPPORTED_EXTENSIONS.begin(),
+                   settings::global::assets::textures::SUPPORTED_EXTENSIONS.end(),
                    extension) !=
-         Settings::Global::Assets::Textures::SUPPORTED_EXTENSIONS.end();
+         settings::global::assets::textures::SUPPORTED_EXTENSIONS.end();
 }
-} // namespace Utils
+} // namespace utils
 } // namespace farmomatica
