@@ -55,7 +55,7 @@ fs::path GetGlobalPath() {
 namespace paths {
 
 fs::path GetTexturesPath() {
-  fs::path path = fs::current_path() / "assets" / "textures";
+  fs::path path = GetGlobalPath() / "assets" / "textures";
   if (!fs::exists(path)) {
     fs::create_directories(path);
   }
@@ -63,7 +63,7 @@ fs::path GetTexturesPath() {
 }
 
 fs::path GetShadersPath() {
-  fs::path path = fs::current_path() / "assets" / "shaders";
+  fs::path path = GetGlobalPath() / "assets" / "shaders";
   if (!fs::exists(path)) {
     fs::create_directories(path);
   }
@@ -71,7 +71,7 @@ fs::path GetShadersPath() {
 }
 
 fs::path GetLogsPath() {
-  fs::path path = fs::current_path() / "logs";
+  fs::path path = GetGlobalPath() / "logs";
   if (!fs::exists(path)) {
     fs::create_directories(path);
   }
