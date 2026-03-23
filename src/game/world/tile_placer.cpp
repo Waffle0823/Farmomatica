@@ -1,17 +1,21 @@
 #include <raylib.h>
 #include <string>
 
-#include "game/assets/tile/tile_loader.h"
+#include "game/assets/texture_loader.h"
 #include "game/world/tile_placer.h"
 
 namespace farmomatica {
 
 void TilePlacer::PlaceTile(const std::string &name, const int x, const int y,
                            const int z) {
-  const Texture2D texture = TileLoader::GetTile(name);
+  const Texture2D *texture = TextureLoader::GetTexture(name);
 
-  const int tileWidth = texture.width;
-  const int tileHeight = texture.height;
+  if (texture == nullptr) {
+    return;
+  }
+
+  const int tileWidth = texture->width;
+  const int tileHeight = texture->height;
 
   const int isoX = (x - y) * (tileWidth / 2);
   const int isoY = (x + y) * (tileHeight / 4) - z * (tileHeight / 2);
@@ -22,7 +26,7 @@ void TilePlacer::PlaceTile(const std::string &name, const int x, const int y,
   const int screenX = isoX + screenCenterX;
   const int screenY = isoY + screenCenterY;
 
-  DrawTexture(texture, screenX, screenY, WHITE);
+  DrawTexture(*texture, screenX, screenY, WHITE);
 }
 
 } // namespace farmomatica
