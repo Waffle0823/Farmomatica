@@ -38,8 +38,8 @@ fn vs_main(input: VertexInput) -> VertexOutput {
     let screenY = isoY + uniforms.screenCenter.y;
 
     var transformedPos = input.vertexPosition;
-    transformedPos.x += screenX;
-    transformedPos.y += screenY;
+    transformedPos.x = transformedPos.x + screenX;
+    transformedPos.y = transformedPos.y + screenY;
 
     var position = uniforms.mvp * vec4<f32>(transformedPos, 1.0);
 
