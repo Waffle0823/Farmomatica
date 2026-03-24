@@ -15,7 +15,6 @@ fs::path GetGlobalPath() {
 
 #ifndef NDEBUG
     path = fs::current_path();
-    LOG_DEBUG("Using project directory for data: {}", path.string());
 #else
 #if defined(_WIN32) || defined(_WIN64)
     const char* appdata = std::getenv("APPDATA");
