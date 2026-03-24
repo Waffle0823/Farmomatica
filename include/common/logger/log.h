@@ -19,8 +19,14 @@ private:
 
 } // namespace farmomatica
 
+#ifndef NDEBUG
 #define LOG_TRACE(...) farmomatica::Log::GetLogger()->trace(__VA_ARGS__)
 #define LOG_DEBUG(...) farmomatica::Log::GetLogger()->debug(__VA_ARGS__)
+#else
+#define LOG_TRACE(...) ((void)0)
+#define LOG_DEBUG(...) ((void)0)
+#endif
+
 #define LOG_INFO(...) farmomatica::Log::GetLogger()->info(__VA_ARGS__)
 #define LOG_WARN(...) farmomatica::Log::GetLogger()->warn(__VA_ARGS__)
 #define LOG_ERROR(...) farmomatica::Log::GetLogger()->error(__VA_ARGS__)

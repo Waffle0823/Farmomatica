@@ -13,6 +13,10 @@ namespace {
 fs::path GetGlobalPath() {
     fs::path path;
 
+#ifndef NDEBUG
+    path = fs::current_path();
+    LOG_DEBUG("Using project directory for data: {}", path.string());
+#else
 #if defined(_WIN32) || defined(_WIN64)
     const char* appdata = std::getenv("APPDATA");
     if (appdata) {
@@ -47,10 +51,11 @@ fs::path GetGlobalPath() {
         LOG_CRITICAL("Unsupported operating system detected");
         throw std::runtime_error("Unsupported OS");
     }
+#endif
 
     return path;
 }
-}  // anonymous namespace
+}  // namespace
 
 namespace paths {
 
