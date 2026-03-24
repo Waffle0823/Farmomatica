@@ -49,3 +49,8 @@
 
 # CMake test discovery
 /cmake_test_discovery_*.json
+
+# Runtime generated folders
+/logs/
+/saves/
+/config/
