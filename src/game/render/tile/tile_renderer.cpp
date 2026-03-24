@@ -10,7 +10,7 @@ void RenderTile(std::string_view name, Vector3 pos) noexcept {
         return;
     }
 
-    DrawTexture(textureOpt->get(), pos.x, pos.y, WHITE);
+    DrawTexture(textureOpt->get(), static_cast<int>(pos.x), static_cast<int>(pos.y), WHITE);
 }
 
 }  // namespace farmomatica

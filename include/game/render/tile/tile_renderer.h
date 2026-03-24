@@ -1,6 +1,6 @@
 #pragma once
 
-#include <raygpu.h>
+#include <raylib.h>
 #include <string_view>
 
 namespace farmomatica {

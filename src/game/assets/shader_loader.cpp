@@ -35,7 +35,7 @@ void ShaderLoader::LoadShaders(const fs::path& path) {
                 continue;
             }
 
-            Shader shader = LoadPipeline(shaderSource);
+            Shader shader = LoadShaderFromMemory(nullptr, shaderSource);
 
             UnloadFileText(shaderSource);
 
