@@ -46,3 +46,6 @@
 
 # clangd
 /compile_commands.json
+
+# CMake test discovery
+/cmake_test_discovery_*.json
