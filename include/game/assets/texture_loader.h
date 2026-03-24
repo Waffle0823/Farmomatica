@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <optional>
 #include <functional>
-#include <raylib.h>
+#include <raygpu.h>
 #include <string>
 #include <string_view>
 #include <unordered_map>

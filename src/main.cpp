@@ -1,5 +1,5 @@
 #include "common/logger/log.h"
-#include <raylib.h>
+#include <raygpu.h>
 
 using farmomatica::Log;
 
@@ -23,15 +23,15 @@ int main(int, char **) {
       EndDrawing();
     }
 
-    CloseWindow();
+    CloseProgram();
     return 0;
   } catch (const std::exception &e) {
     LOG_CRITICAL("Unhandled exception: {}", e.what());
-    CloseWindow();
+    CloseProgram();
     return 1;
   } catch (...) {
     LOG_CRITICAL("Unknown exception occurred");
-    CloseWindow();
+    CloseProgram();
     return 1;
   }
 }

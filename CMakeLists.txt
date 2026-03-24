@@ -5,8 +5,20 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(raylib CONFIG REQUIRED)
-find_package(glfw3 REQUIRED)
+include(FetchContent)
+
+option(SUPPORT_VULKAN_BACKEND "Enable Vulkan backend" ON)
+option(SUPPORT_GLFW "Enable GLFW" ON)
+option(SUPPORT_GLSL_PARSER "Enable GLSL parser" ON)
+
+# TODO: Migrate to vcpkg when raygpu is available there
+FetchContent_Declare(
+    raygpu_git
+    GIT_REPOSITORY https://github.com/manuel5975p/raygpu.git
+    GIT_TAG master
+)
+FetchContent_MakeAvailable(raygpu_git)
+
 find_package(spdlog REQUIRED)
 
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
@@ -15,7 +27,7 @@ set(ALL_SOURCES ${SOURCES} ${HEADERS})
 
 add_executable(Farmomatica ${ALL_SOURCES})
 target_include_directories(Farmomatica PRIVATE "${CMAKE_SOURCE_DIR}/include")
-target_link_libraries(Farmomatica PRIVATE raylib glfw spdlog::spdlog)
+target_link_libraries(Farmomatica PRIVATE raygpu spdlog::spdlog)
 
 if (CMAKE_EXPORT_COMPILE_COMMANDS)
     add_custom_target(
