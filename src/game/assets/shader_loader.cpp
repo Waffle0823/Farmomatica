@@ -1,5 +1,4 @@
 #include "game/assets/shader_loader.h"
-#include <iostream>
 
 #include "common/logger/log.h"
 #include "common/utils/extension_utils.h"
@@ -23,38 +22,65 @@ void ShaderLoader::LoadShaders(const fs::path& path) {
         return;
     }
 
+    std::unordered_map<std::string, std::pair<fs::path, fs::path>> shaderPairs;
+
     for (const auto& entry : fs::recursive_directory_iterator(path)) {
         if (!entry.is_regular_file()) continue;
 
         std::string ext = entry.path().extension().string();
 
         if (utils::IsShaderExtensionSupported(ext)) {
-            char* shaderSource = LoadFileText(entry.path().c_str());
-            if (shaderSource == nullptr) {
-                LOG_ERROR("Failed to read shader file: {}", entry.path().string());
-                continue;
-            }
-
-            Shader shader = LoadShaderFromMemory(nullptr, shaderSource);
-
-            UnloadFileText(shaderSource);
-
-            if (shader.id == 0) {
-                LOG_ERROR("Failed to compile pipeline: {}", entry.path().string());
-                continue;
-            }
-
             fs::path relative = fs::relative(entry.path(), path);
-            relative.replace_extension("");
+            fs::path baseName = relative;
+            baseName.replace_extension("");
+            std::string baseNameStr = baseName.string();
 
-            std::cout << "Loading shader: " << relative.string() << std::endl;
-
-            shaders_[relative.string()] = shader;
-
-            LOG_DEBUG("Shader (pipeline) loaded successfully: {}", relative.string());
-        } else {
-            LOG_WARN("Unsupported shader extension: {}", entry.path().string());
+            if (ext == ".vs") {
+                shaderPairs[baseNameStr].first = entry.path();
+            } else if (ext == ".fs") {
+                shaderPairs[baseNameStr].second = entry.path();
+            }
         }
+    }
+
+    for (const auto& [baseName, paths] : shaderPairs) {
+        const auto& [vsPath, fsPath] = paths;
+
+        char* vsSource = nullptr;
+        char* fsSource = nullptr;
+
+        if (!vsPath.empty()) {
+            vsSource = LoadFileText(vsPath.c_str());
+            if (vsSource == nullptr) {
+                LOG_ERROR("Failed to read vertex shader file: {}", vsPath.string());
+            }
+        }
+
+        if (!fsPath.empty()) {
+            fsSource = LoadFileText(fsPath.c_str());
+            if (fsSource == nullptr) {
+                LOG_ERROR("Failed to read fragment shader file: {}", fsPath.string());
+            }
+        }
+
+        if (vsSource == nullptr && fsSource == nullptr) {
+            LOG_ERROR("Failed to load both shaders for: {}", baseName);
+            continue;
+        }
+
+        Shader shader = LoadShaderFromMemory(vsSource, fsSource);
+
+        if (vsSource != nullptr) UnloadFileText(vsSource);
+        if (fsSource != nullptr) UnloadFileText(fsSource);
+
+        if (shader.id == 0) {
+            LOG_ERROR("Failed to compile shader: {}", baseName);
+            continue;
+        }
+
+        shaders_[baseName] = shader;
+
+        LOG_DEBUG("Shader loaded successfully: {}", baseName);
     }
 }
 
