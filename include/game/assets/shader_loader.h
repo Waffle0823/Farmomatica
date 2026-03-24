@@ -1,8 +1,8 @@
 #pragma once
 
 #include <filesystem>
-#include <optional>
 #include <functional>
+#include <optional>
 #include <raygpu.h>
 #include <string>
 #include <string_view>
@@ -34,7 +34,7 @@ public:
     void UnloadShader(std::string_view identifier) noexcept;
 
     /**
-     * @brief Retrieves a shader by its identifier.
+     * @brief Retrieves a shader pipeline by its identifier.
      * @param identifier The string identifier of the shader to retrieve.
      * @return Optional reference to the Shader if found, std::nullopt otherwise.
      */
