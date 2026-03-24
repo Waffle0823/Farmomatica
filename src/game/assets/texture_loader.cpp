@@ -21,7 +21,7 @@ void TextureLoader::LoadTextures(const fs::path& path) {
         return;
     }
 
-    for (const fs::directory_entry& entry : fs::directory_iterator(path)) {
+    for (const fs::directory_entry& entry : fs::recursive_directory_iterator(path)) {
         if (entry.is_regular_file()) {
             if (utils::IsTextureExtensionSupported(
                     entry.path().extension().string())) {
