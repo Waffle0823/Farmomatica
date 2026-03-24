@@ -2,14 +2,6 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "ninja",
-      "generator": "Ninja",
-      "binaryDir": "build",
-      "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
-      }
-    },
-    {
       "name": "debug",
       "generator": "Ninja",
       "binaryDir": "build/debug",
