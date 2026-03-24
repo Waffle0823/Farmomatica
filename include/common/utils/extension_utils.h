@@ -7,10 +7,9 @@
 
 namespace farmomatica::utils {
 
-inline constexpr bool IsTextureExtensionSupported(std::string_view extension) noexcept {
-  return std::find(config::TEXTURE_EXTENSIONS.begin(),
-                   config::TEXTURE_EXTENSIONS.end(),
-                   extension) != config::TEXTURE_EXTENSIONS.end();
+constexpr bool IsTextureExtensionSupported(std::string_view extension) noexcept {
+    return std::ranges::find(config::TEXTURE_EXTENSIONS, extension) !=
+           config::TEXTURE_EXTENSIONS.end();
 }
 
-} // namespace farmomatica::utils
+}  // namespace farmomatica::utils

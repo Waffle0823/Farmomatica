@@ -4,13 +4,13 @@
 namespace farmomatica {
 
 void RenderTile(std::string_view name, Vector3 pos) noexcept {
-  auto textureOpt = TextureLoader::GetInstance().GetTexture(name);
+    auto textureOpt = TextureLoader::GetInstance().GetTexture(name);
 
-  if (!textureOpt.has_value()) {
-    return;
-  }
+    if (!textureOpt.has_value()) {
+        return;
+    }
 
-  DrawTexture(textureOpt->get(), pos.x, pos.y, WHITE);
+    DrawTexture(textureOpt->get(), pos.x, pos.y, WHITE);
 }
 
-} // namespace farmomatica
+}  // namespace farmomatica

@@ -12,4 +12,4 @@ namespace farmomatica {
  */
 void RenderTile(std::string_view name, Vector3 pos) noexcept;
 
-} // namespace farmomatica
+}  // namespace farmomatica
