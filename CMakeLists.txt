@@ -9,7 +9,7 @@ include(FetchContent)
 
 option(SUPPORT_VULKAN_BACKEND "Enable Vulkan backend" ON)
 option(SUPPORT_GLFW "Enable GLFW" ON)
-option(SUPPORT_GLSL_PARSER "Enable GLSL parser" ON)
+option(SUPPORT_WGSL_PARSER "Enable WGSL parser" ON)
 
 # TODO: Migrate to vcpkg when raygpu is available there
 FetchContent_Declare(
