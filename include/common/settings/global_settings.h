@@ -13,4 +13,6 @@ inline constexpr std::array<std::string_view, 1> TEXTURE_EXTENSIONS = {".png"};
 inline constexpr int NULL_TEXTURE_WIDTH = 32;
 inline constexpr int NULL_TEXTURE_HEIGHT = 32;
 
+inline constexpr std::array<std::string_view, 1> SHADER_EXTENSIONS = {".wgsl"};
+
 }  // namespace farmomatica::config

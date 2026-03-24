@@ -12,4 +12,9 @@ constexpr bool IsTextureExtensionSupported(std::string_view extension) noexcept 
            config::TEXTURE_EXTENSIONS.end();
 }
 
+constexpr bool IsShaderExtensionSupported(std::string_view extension) noexcept {
+    return std::ranges::find(config::SHADER_EXTENSIONS, extension) !=
+           config::SHADER_EXTENSIONS.end();
+}
+
 }  // namespace farmomatica::utils
