@@ -5,7 +5,6 @@
 #include "common/logger/log.h"
 #include "game/assets/shader_loader.h"
 #include "game/assets/texture_loader.h"
-#include "game/render/tile/tile_renderer.h"
 
 using farmomatica::Log;
 
