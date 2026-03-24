@@ -1,7 +1,11 @@
 #include <raylib.h>
+#include <rlgl.h>
 
+#include "common/data/game_data.h"
 #include "common/logger/log.h"
-
+#include "game/assets/shader_loader.h"
+#include "game/assets/texture_loader.h"
+#include "game/render/tile/tile_renderer.h"
 
 using farmomatica::Log;
 
@@ -18,22 +22,37 @@ int main(int, char**) {
 
         SetTargetFPS(60);
 
+        farmomatica::ShaderLoader::GetInstance().LoadShaders(farmomatica::paths::GetShadersPath());
+        farmomatica::TextureLoader::GetInstance().LoadTextures(farmomatica::paths::GetTexturesPath());
+        LOG_INFO("Textures loaded");
+
         while (!WindowShouldClose()) {
             BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawText("Hello raylib!", 190, 200, 20, DARKGRAY);
+
+            rlEnableDepthTest();
+
+            // TODO: Render logic
+
+            rlDisableDepthTest();
+
+            DrawText("Testing Tile Renderer", 190, 200, 20, DARKGRAY);
+            DrawFPS(10, 10);
             EndDrawing();
         }
 
-        CloseProgram();
+        farmomatica::TextureLoader::GetInstance().UnloadAll();
+        farmomatica::ShaderLoader::GetInstance().UnloadAll();
+
+        CloseWindow();
         return 0;
     } catch (const std::exception& e) {
         LOG_CRITICAL("Unhandled exception: {}", e.what());
-        CloseProgram();
+        CloseWindow();
         return 1;
     } catch (...) {
         LOG_CRITICAL("Unknown exception occurred");
-        CloseProgram();
+        CloseWindow();
         return 1;
     }
 }
